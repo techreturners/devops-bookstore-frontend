@@ -18,22 +18,22 @@ const useStyles = makeStyles(() => ({
     },
 }));
 
-function Book() {
+function Book({bookTitle, bookAuthors, bookDescription, bookImage}) {
     const classes = useStyles();
     return (
         <Card className={classes.root}>
             <CardHeader
-                title="Learning Docker"
-                subheader="Pethuru Raj, Jeeva S. Chelladhurai, Vinod Singh"
+                title={bookTitle}
+                subheader={bookAuthors}
             />
             <CardMedia
                 className={classes.media}
-                image="https://itbook.store/img/books/9781784397937.png"
-                title="Docker Image"
+                image={bookImage}
+                title={bookTitle}
             />
             <CardContent>
                 <Typography variant="body2" color="textSecondary" component="p">
-                    Docker is a next-generation platform for simplifying application containerization life-cycle. Docker allows you to create a robust and resilient environment in which you can generate portable, composable, scalable, and stable application containers.
+                    {bookDescription}
                 </Typography>
             </CardContent>
             <CardActions disableSpacing>
