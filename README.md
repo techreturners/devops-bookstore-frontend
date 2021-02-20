@@ -45,4 +45,4 @@ Once the image has built you can start up the container by running:
 docker run --rm -it -p 8080:80 react-nginx:1.0
 ```
 
-Then you should be able to open up your browser and head to [http://localhost:3001/](http://localhost:3001/)
+Then you should be able to open up your browser and head to [http://localhost:8080/](http://localhost:8080/)
