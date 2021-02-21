@@ -25,7 +25,7 @@ npm start
 
 ### Running in Docker
 
-The application can be deployed as an NGINX Docker container.
+The application can be deployed as a Docker container.
 
 In order to run in docker, firstly build the react app
 
@@ -36,13 +36,13 @@ npm run build
 Then build the Docker image
 
 ```
-docker build -t react-nginx:1.0 .
+docker build -t bookstore-frontend:1.0 .
 ```
 
 Once the image has built you can start up the container by running:
 
 ```
-docker run --rm -it -p 8080:80 react-nginx:1.0
+docker run --rm -it -p 8080:80 bookstore-frontend:1.0
 ```
 
 Then you should be able to open up your browser and head to [http://localhost:8080/](http://localhost:8080/)
