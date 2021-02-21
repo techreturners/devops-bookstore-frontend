@@ -2,8 +2,23 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Book from './components/Book';
+import axios from 'axios';
+import { useState, useEffect } from 'react';
+
 
 function App() {
+
+  const [data, setData] = useState({ books: [] });
+
+  useEffect(async () => {
+    const result = await axios(
+      `${process.env.REACT_APP_BOOKS_API_ENDPOINT}/books`,
+    );
+ 
+    setData(result.data);
+  }, [setData]);
+
+
   return (
     <Container maxWidth="md">
       <Grid container spacing={3}>
@@ -14,27 +29,17 @@ function App() {
         </Grid>
       </Grid>
       <Grid container spacing={2}>
-        <Grid item xs={12} md={6}>
-          <Book bookTitle="Learning Docker" 
-                bookImage="https://itbook.store/img/books/9781784397937.png" 
-                bookDescription="Docker is a next-generation platform for simplifying application containerization life-cycle. Docker allows you to create a robust and resilient environment in which you can generate portable, composable, scalable, and stable application containers."
-                bookAuthors="Pethuru Raj, Jeeva S. Chelladhurai, Vinod Singh"
-          />
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <Book bookTitle="Kubernetes Best Practices" 
-                bookImage="https://itbook.store/img/books/9781492056478.png" 
-                bookDescription="In this practical guide, four Kubernetes professionals with deep experience in distributed systems, enterprise application development, and open source will guide you through the process of building applications with container orchestration."
-                bookAuthors="Brendan Burns, Eddie Villalba"
-          />
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <Book bookTitle="Site Reliability Engineering" 
-                bookImage="https://itbook.store/img/books/9781491929124.png" 
-                bookDescription="The overwhelming majority of a software system's lifespan is spent in use, not in design or implementation. So, why does conventional wisdom insist that software engineers focus primarily on the design and development of large-scale computing systems?"
-                bookAuthors="Betsy Beyer, Chris Jones, Jennifer Petoff"
-          />
-        </Grid>
+        {
+          data.books.map(book => (
+            <Grid item xs={12} md={6} key={book.bookTitle}>
+              <Book bookTitle={book.bookTitle}
+                  bookImage={book.bookImage}
+                  bookDescription={book.bookDescription}
+                  bookAuthors={book.bookAuthors}
+              />
+            </Grid>
+          ))
+        }
       </Grid>
     </Container>
   );
