@@ -10,13 +10,17 @@ function App() {
 
   const [data, setData] = useState({ books: [] });
 
-  useEffect(async () => {
-    const result = await axios(
-      `${process.env.REACT_APP_BOOKS_API_ENDPOINT}/books`,
-    );
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await axios(
+        `${process.env.REACT_APP_BOOKS_API_ENDPOINT}/books`,
+      );
  
-    setData(result.data);
-  }, [setData]);
+      setData(result.data);
+    };
+ 
+    fetchData();
+  }, []);
 
 
   return (
