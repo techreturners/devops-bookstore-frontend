@@ -9,6 +9,16 @@ A sample [React](https://reactjs.org/) app and accompanying Dockerfile for publi
 
 Firstly make sure you [fork this repository](https://docs.github.com/en/github/collaborating-with-pull-requests/working-with-forks/about-forks) to your own GitHub account and the clone your forked version down to your local computer.
 
+### Exploring the files 🕵️
+
+Before diving in to getting things running, it's well worth exploring the structure and files within this repository.
+
+Let's start with the [Dockerfile](./Dockerfile). Notice that it contains information around the [Parent Image](https://docs.docker.com/glossary/#parent-image). You can see this twice in the file indicated by the lines `FROM node:13.12.0-alpine as build` and `FROM nginx:1.21.0-alpine`.
+
+Usually you would only see one parent image for a Dockerfile. However, this particular Dockerfile is a little bit more interesting. It actually contains the definition for two different docker images, one to **build** the React application and one for **running** the built application. This is because we use [multi-stage build concept](https://docs.docker.com/develop/develop-images/multistage-build/) with Docker.
+
+Within the [src](./src) directory you'll find the Javascript files for the React application.
+
 ### Running in Docker
 
 The application can be deployed as a Docker container.
