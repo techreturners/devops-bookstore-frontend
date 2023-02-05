@@ -1,6 +1,6 @@
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import Container from '@material-ui/core/Container';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
 import Book from './components/Book';
 import axios from 'axios';
 import { useState, useEffect } from 'react';

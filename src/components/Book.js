@@ -1,33 +1,23 @@
 
-import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
-import CardContent from '@material-ui/core/CardContent';
-import { makeStyles } from '@material-ui/core/styles';
-import IconButton from '@material-ui/core/IconButton';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
-import Typography from '@material-ui/core/Typography';
-import CardActions from '@material-ui/core/CardActions';
-
-
-const useStyles = makeStyles(() => ({
-    media: {
-      height: 0,
-      paddingTop: '56.25%', // 16:9
-    },
-}));
+import Card from '@mui/material/Card';
+import CardHeader from '@mui/material/CardHeader';
+import CardMedia from '@mui/material/CardMedia';
+import CardContent from '@mui/material/CardContent';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import ShareIcon from '@mui/icons-material/Share';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import CardActions from '@mui/material/CardActions';
 
 function Book({bookTitle, bookAuthors, bookDescription, bookImage}) {
-    const classes = useStyles();
     return (
-        <Card className={classes.root}>
+        <Card>
             <CardHeader
                 title={bookTitle}
                 subheader={bookAuthors}
             />
             <CardMedia
-                className={classes.media}
+                sx={{ height: 320 }}
                 image={bookImage}
                 title={bookTitle}
             />
