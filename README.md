@@ -28,13 +28,13 @@ In order to run in docker firstly build the docker image.
 It will utilse the Docker [multi-stage build concept](https://docs.docker.com/develop/develop-images/multistage-build/). Firstly utilising a node image to build the react app. Then it will take the output of that build phase and place it into an [Nginx image](https://hub.docker.com/_/nginx) and run as a webserver.
 
 ```
-docker build -t bookstore-frontend:1.0 .
+docker build --platform linux/amd64 -t bookstore-frontend:1.0 .
 ```
 
 Once the image has built you can start up the container by running:
 
 ```
-docker run --rm -it -p 8080:80 bookstore-frontend:1.0
+docker run --platform linux/amd64 --rm -it -p 8080:80 bookstore-frontend:1.0
 ```
 
 Then you should be able to open up your browser and head to [http://localhost:8080/](http://localhost:8080/)
